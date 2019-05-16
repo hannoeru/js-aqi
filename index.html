@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/3.0.0/fetch.min.js"></script>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="title">
+        <h1>空氣品質指標(AQI)</h1>
+        <select class="selectCity">
+          <option value="select">請選擇地區</option>
+        </select>
+      </div>
+      <div class="rangeList">
+        <table>
+          <tr>
+            <td class="color-01">0～50</td>
+            <td class="color-02">51～100</td>
+            <td class="color-03">101～150</td>
+            <td class="color-04">151～200</td>
+            <td class="color-05">201～300</td>
+            <td class="color-06">301～400</td>
+          </tr>
+          <tr>
+            <td>良好</td>
+            <td>普通</td>
+            <td>對敏感族群<br>不健康</td>
+            <td>對所有族群<br>不健康</td>
+            <td>非常不健康</td>
+            <td>危害</td>
+          </tr>
+        </table>
+      </div>
+    </header>
+    <div class="showCity">
+      <div class="city">高雄市</div>
+      <div class="line"></div>
+      <div class="updateTime">2019-01-24 14:00 更新</div>
+    </div>
+    <content>
+      <div class="selectLocation">
+        <div class="location"></div>
+        <div class="aqi color-01"></div>
+        <div class="allAqi">
+          <div class="allAqi-list">
+            <div class="allAqi-list-title"></div>
+            <div class="allAqi-list-cf"></div>
+            <div class="allAqi-list-num"></div>
+          </div>
+          <div class="allAqi-list">
+            <div class="allAqi-list-title"></div>
+            <div class="allAqi-list-cf"></div>
+            <div class="allAqi-list-num"></div>
+          </div>
+          <div class="allAqi-list">
+            <div class="allAqi-list-title"></div>
+            <div class="allAqi-list-cf"></div>
+            <div class="allAqi-list-num"></div>
+          </div>
+          <div class="allAqi-list">
+            <div class="allAqi-list-title"></div>
+            <div class="allAqi-list-cf"></div>
+            <div class="allAqi-list-num"></div>
+          </div>
+          <div class="allAqi-list">
+            <div class="allAqi-list-title"></div>
+            <div class="allAqi-list-cf"></div>
+            <div class="allAqi-list-num"></div>
+          </div>
+          <div class="allAqi-list">
+            <div class="allAqi-list-title"></div>
+            <div class="allAqi-list-cf"></div>
+            <div class="allAqi-list-num"></div>
+          </div>
+        </div>
+      </div>
+      <div class="listLocation">
+        <div class="card">
+          <div class="location">前金</div>
+          <div class="aqi color-01">156</div>
+        </div>
+        <div class="card">
+          <div class="location">前金</div>
+          <div class="aqi">156</div>
+        </div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+      </div>
+    </content>
+  </div>
+  <script src="./js/all.js" charset="utf-8"></script>
+</body>
+</html>
