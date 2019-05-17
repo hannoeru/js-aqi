@@ -1,6 +1,6 @@
 const selectCity = document.querySelector('.selectCity');
 const listLocation = document.querySelector('.listLocation');
-let data = {};
+let data = '';
 const getData = () => {
   const proxy = 'https://script.google.com/macros/s/AKfycby6bUHQkwhWPYkdpAcp4IxIdT7rG87fTr6cN6sdkA/exec?url=';
   const url = 'https://opendata.epa.gov.tw/ws/Data/AQI/?$format=json';
@@ -19,6 +19,7 @@ const getData = () => {
     .catch(e => {
       console.log(e.message); // エラーです！
     });
+  if (data !== '') {clearTimeout(timer);}
 };
 const addToOption = () => {
   var str = '';
@@ -89,7 +90,7 @@ const changeCity = (i) => {
   document.querySelector('.updateTime').textContent = data[i].PublishTime+' 更新';
 };
 getData();
-setTimeout(getData,60000);
+let timer = setTimeout(getData,10000);
 selectCity.addEventListener('change',function(e){createCard(e.target.value);});
 listLocation.addEventListener('click',function(e){
   const card = e.target.parentElement;
