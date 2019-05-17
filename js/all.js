@@ -88,7 +88,8 @@ const changeCity = (i) => {
   document.querySelector('.city').textContent = data[i].County;
   document.querySelector('.updateTime').textContent = data[i].PublishTime+' 更新';
 };
-setInterval(getData,60000);
+getData();
+setTimeout(getData,60000);
 selectCity.addEventListener('change',function(e){createCard(e.target.value);});
 listLocation.addEventListener('click',function(e){
   const card = e.target.parentElement;
