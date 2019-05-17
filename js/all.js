@@ -58,9 +58,7 @@ const createCard = (city) =>{
         a = 1;
       }
       let aqi = data[i].AQI;
-      if (aqi == '') {
-        aqi = 'null';
-      }
+      if (aqi == '') { aqi = 'null'; }
       str += `
       <div class="card" data-num="${i}">
         <div class="location">${data[i].SiteName}</div>
@@ -90,7 +88,7 @@ const changeCity = (i) => {
   document.querySelector('.city').textContent = data[i].County;
   document.querySelector('.updateTime').textContent = data[i].PublishTime+' 更新';
 };
-getData();
+setInterval(getData,60000);
 selectCity.addEventListener('change',function(e){createCard(e.target.value);});
 listLocation.addEventListener('click',function(e){
   const card = e.target.parentElement;
