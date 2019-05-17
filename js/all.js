@@ -18,6 +18,7 @@ const getData = () => {
       json = JSON.parse(json);
       data = json;
       addToOption();
+      createCard('臺北市');
       console.log(data);
     })
     .catch(e => {
@@ -51,13 +52,18 @@ const getColor = (num) => {
     return 'color-06';
   }
 };
-const createCard = (e) =>{
-  const city = e.target.value;
+const createCard = (city) =>{
   let str = '';
   for (var i = 0; i < data.length; i++) {
     if (data[i].County === city) {
+      let a = 0;
       let aqi = data[i].AQI;
-      if (data[i].AQI == '') {
+      if (a === 0) {
+        changeCity(i);
+        showData(i);
+        a = 1;
+      }
+      if (aqi == '') {
         aqi = 'null';
       }
       str += `
@@ -66,34 +72,37 @@ const createCard = (e) =>{
         <div class="aqi color-01 ${getColor(data[i].AQI)}">${aqi}</div>
       </div>
       `;
-      changeCity(data[i]);
     }
   }
   listLocation.innerHTML = str;
 };
 
-const showData = (e) => {
-  const card = e.target.parentElement;
-  if (card.className === 'card') {
-    let dataList = data[card.dataset.num];
-    const location = document.querySelector('.selectLocation .location');
-    const aqi = document.querySelector('.selectLocation .aqi');
-    const listNum = document.querySelectorAll('.allAqi-list-num');
-    const cf = ['O3','PM10','PM2.5','CO','SO2','NO2'];
-    if (dataList.AQI == '') { dataList.AQI = 'null'; }
-    location.textContent = dataList.SiteName;
-    aqi.textContent = dataList.AQI;
-    aqi.classList = 'aqi '+getColor(dataList.AQI);
-    for (var i = 0; i < listNum.length; i++) {
-      if (dataList[cf[i]] == '') { dataList[cf[i]] = 'null'; }
-      listNum[i].textContent = dataList[cf[i]];
-    }
+const showData = (num) => {
+  let dataList = data[num];
+  const location = document.querySelector('.selectLocation .location');
+  const aqi = document.querySelector('.selectLocation .aqi');
+  const listNum = document.querySelectorAll('.allAqi-list-num');
+  const cf = ['O3','PM10','PM2.5','CO','SO2','NO2'];
+  if (dataList.AQI == '') { dataList.AQI = 'null'; }
+  location.textContent = dataList.SiteName;
+  aqi.textContent = dataList.AQI;
+  aqi.classList = 'aqi '+getColor(dataList.AQI);
+  for (var i = 0; i < listNum.length; i++) {
+    if (dataList[cf[i]] == '') { dataList[cf[i]] = 'null'; }
+    listNum[i].textContent = dataList[cf[i]];
   }
 };
-const changeCity = (city) => {
-  document.querySelector('.city').textContent = city.County;
-  document.querySelector('.updateTime').textContent = city.PublishTime+' 更新';
+const changeCity = (i) => {
+  document.querySelector('.city').textContent = data[i].County;
+  document.querySelector('.updateTime').textContent = data[i].PublishTime+' 更新';
 };
 setTimeout(getData,10000);
-selectCity.addEventListener('change',createCard);
-listLocation.addEventListener('click',showData,false);
+selectCity.addEventListener('change',function(e){
+  createCard(e.target.value);
+});
+listLocation.addEventListener('click',function(e){
+  const card = e.target.parentElement;
+  if (card.className === 'card') {
+    showData(card.dataset.num);
+  }
+});
