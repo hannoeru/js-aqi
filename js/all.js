@@ -6,10 +6,10 @@ const getData = (n) => {
   const url = 'http://opendata2.epa.gov.tw/AQI.json';
   fetch(proxy+url)
     .then(response => {
-      return response.ok ? response.text() : Promise.reject(new Error('エラーです！'));
+      return response.ok ? response.json() : Promise.reject(new Error('エラーです！'));
     })
     .then(json => {
-      data = JSON.parse(json);
+      data = json;
       addToOption();
       createCard('臺北市');
       console.log(data);
