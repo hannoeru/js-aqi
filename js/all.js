@@ -2,8 +2,9 @@ const selectCity = document.querySelector('.selectCity');
 const listLocation = document.querySelector('.listLocation');
 let data = '';
 const getData = (n) => {
+  const proxy = 'https://script.google.com/macros/s/AKfycby6bUHQkwhWPYkdpAcp4IxIdT7rG87fTr6cN6sdkA/exec?url=';
   const url = 'http://opendata2.epa.gov.tw/AQI.json';
-  fetch(url)
+  fetch(proxy+url)
     .then(response => {
       return response.ok ? response.text() : Promise.reject(new Error('エラーです！'));
     })
@@ -50,7 +51,7 @@ const getColor = (num) => {
 const createCard = (city) =>{
   let str = '';
   let a = 0;
-  for (let i = data.length-1; i >= 0; i--) {
+  for (let i = 0; i < data.length; i++) {
     if (data[i].County === city) {
       if (a === 0) {
         changeCity(i);
