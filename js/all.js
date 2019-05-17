@@ -4,8 +4,7 @@ let data = '';
 const getData = (n) => {
   const proxy = 'https://script.google.com/macros/s/AKfycby6bUHQkwhWPYkdpAcp4IxIdT7rG87fTr6cN6sdkA/exec?url=';
   const url = 'https://opendata.epa.gov.tw/ws/Data/AQI/?$format=json';
-  const option = {mode:'cors'};
-  fetch(proxy+url,option)
+  fetch(proxy+url)
     .then(response => {
       return response.ok ? response.text() : Promise.reject(new Error('エラーです！'));
     })
