@@ -19,7 +19,6 @@ const getData = () => {
     .catch(e => {
       console.log(e.message); // エラーです！
     });
-  if (data !== '') {clearTimeout(timer);}
 };
 const addToOption = () => {
   var str = '';
@@ -90,7 +89,6 @@ const changeCity = (i) => {
   document.querySelector('.updateTime').textContent = data[i].PublishTime+' 更新';
 };
 getData();
-let timer = setTimeout(getData,10000);
 selectCity.addEventListener('change',function(e){createCard(e.target.value);});
 listLocation.addEventListener('click',function(e){
   const card = e.target.parentElement;
