@@ -49,13 +49,15 @@ const getColor = (num) => {
 };
 const createCard = (city) =>{
   let str = '';
-  for (var i = 0; i < data.length; i++) {
+  let a = 0;
+  for (let i = data.length-1; i >= 0; i--) {
     if (data[i].County === city) {
-      let aqi = data[i].AQI;
-      if (i == data.length-1) {
+      if (a == 0) {
         changeCity(i);
         showData(i);
+        a = 1;
       }
+      let aqi = data[i].AQI;
       if (aqi == '') {
         aqi = 'null';
       }
