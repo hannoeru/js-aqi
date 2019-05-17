@@ -52,7 +52,7 @@ const createCard = (city) =>{
   let a = 0;
   for (let i = data.length-1; i >= 0; i--) {
     if (data[i].County === city) {
-      if (a == 0) {
+      if (a === 0) {
         changeCity(i);
         showData(i);
         a = 1;
