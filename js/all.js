@@ -11,8 +11,7 @@ const getData = () => {
       return response.ok ? response.text() : Promise.reject(new Error('エラーです！'));
     })
     .then(json => {
-      json = JSON.parse(json);
-      data = json;
+      data = JSON.parse(json);
       addToOption();
       createCard('臺北市');
       console.log(data);
