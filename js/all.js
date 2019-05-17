@@ -8,11 +8,7 @@ const getData = () => {
     mode:'cors'
   }]) // 404 (Not Found)
     .then(response => {
-      if (response.ok) {
-        return response.text();
-      } else {
-        return Promise.reject(new Error('エラーです！'));
-      }
+      return response.ok ? response.text() : Promise.reject(new Error('エラーです！'));
     })
     .then(json => {
       json = JSON.parse(json);
@@ -56,12 +52,10 @@ const createCard = (city) =>{
   let str = '';
   for (var i = 0; i < data.length; i++) {
     if (data[i].County === city) {
-      let a = 0;
       let aqi = data[i].AQI;
-      if (a === 0) {
+      if (i == data.length-1) {
         changeCity(i);
         showData(i);
-        a = 1;
       }
       if (aqi == '') {
         aqi = 'null';
@@ -76,7 +70,6 @@ const createCard = (city) =>{
   }
   listLocation.innerHTML = str;
 };
-
 const showData = (num) => {
   let dataList = data[num];
   const location = document.querySelector('.selectLocation .location');
@@ -97,9 +90,7 @@ const changeCity = (i) => {
   document.querySelector('.updateTime').textContent = data[i].PublishTime+' 更新';
 };
 setTimeout(getData,10000);
-selectCity.addEventListener('change',function(e){
-  createCard(e.target.value);
-});
+selectCity.addEventListener('change',function(e){createCard(e.target.value);});
 listLocation.addEventListener('click',function(e){
   const card = e.target.parentElement;
   if (card.className === 'card') {
