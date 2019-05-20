@@ -24,7 +24,7 @@ const getData = (n) => {
 const addToOption = () => {
   var str = '';
   var zone = [];
-  str += '<option disable>請選擇地區</option>';
+  str += '<option disabled>請選擇地區</option>';
   for(var i = 0;i < data.length; i++){
     if(zone.indexOf(data[i].County) == -1){
       zone.push(data[i].County);
