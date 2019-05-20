@@ -42,6 +42,7 @@ header{
   font-size: 16px;
   border: 3px solid #000000;
   background: #FFFFFF;
+  outline: 0;
 }
 .rangeList{
   margin-top: 13px;
